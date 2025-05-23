@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lurdes Shop - Página Inicial</title>
+  <style>
+    /* ... (mantenha o restante do CSS existente) ... */
+
+    header {
+      background-color: #ffffff;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+      flex-wrap: wrap;
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px; /* Espaço consistente entre itens */
+      flex: 1;
+    }
+
+    .nav-left {
+      justify-content: flex-start;
+    }
+
+    .nav-right {
+      justify-content: flex-end;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2f7d32;
+      flex: 1;
+      text-align: center;
+      min-width: 180px; /* Garante que o logo não fique espremido */
+    }
+
+    .header-icon {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      transition: transform 0.3s;
+    }
+
+    .header-icon:hover {
+      transform: scale(1.1);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      padding: 5px 0;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #3B7A57;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+      }
+      
+      .nav-left, .nav-right {
+        justify-content: center;
+        gap: 15px;
+      }
+      
+      .logo {
+        order: -1;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav-left">
+      <a href="Contato.html">
+        <img src="Icone.png" alt="Perfil" class="header-icon">
+      </a>
+      <a href="Contato.html">Contatos</a>
+    </div>
+    
+    <div class="logo">LURDES Shop</div>
+    
+    <div class="nav-right">
+      <a href="#">
+        <img src="Carrinho.png" alt="Carrinho" class="header-icon">
+      </a>
+      <a href="#">FAQ</a>
+    </div>
+  </header>
+
+  <!-- ... (restante do HTML permanece igual) ... -->
+
+</body>
+</html>
