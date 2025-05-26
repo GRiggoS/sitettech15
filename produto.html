@@ -1,147 +1,158 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Loja de Hortifrúti</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #F7F6F2;
-      margin: 0;
-      padding: 0;
-    }
-    header, footer {
-      background-color: #ffffff;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-    }
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #333;
-    }
-    .banner {
-      background-color: #ddd;
-      height: 300px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 24px;
-      color: #333;
-    }
-    .produtos {
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .produtos h2 {
-      color: #2f4f2f;
-    }
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .card {
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 15px;
-      width: 200px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .imagem {
-      height: 120px;
-      background-color: #ccc;
-      margin-bottom: 10px;
-      line-height: 120px;
-      color: #555;
-    }
-    .btn {
-      background-color: #3B7A57;
-      color: white;
-      border: none;
-      padding: 10px;
-      margin-top: 10px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    footer {
-      flex-direction: column;
-      text-align: center;
-      font-size: 14px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos - Loja da Lurdes</title>
+    <!-- Adicionando Font Awesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7fef7;
+            padding: 20px;
+            color: #333;
+        }
+        .voltar-inicio {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: #2f7d32;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .voltar-inicio::before {
+            content: "←";
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .informacoes, .perfil {
+            flex: 1 1 300px;
+            margin: 10px;
+        }
+        .item-contato {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .icone {
+            width: 50px;
+            height: 50px;
+            background: #d0f0d0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin-right: 15px;
+            font-size: 20px;
+            color: #3c763d;
+        }
+        .icone.whatsapp { color: #25D366; background-color: #e6f7e8; }
+        .icone.facebook { color: #1877F2; background-color: #e7f0fd; }
+        .icone.instagram { 
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-color: #fae8f3;
+        }
+        .email {
+            margin-top: 20px;
+            font-style: italic;
+        }
+        .foto-perfil {
+            width: 100%;
+            height: 300px;
+            background: #d0f0d0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: #3c763d;
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #2f7d32;
+        }
+        .imagem-produto {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            height: 300px;
+        }
+        .links-contato {
+            text-decoration: none;
+            color: #2f7d32;
+            font-weight: bold;
+        }
+        .links-contato:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div><strong>Store</strong></div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="produtos.html">Produtos</a>
-      <a href="Contato.html">Contato</a>
-      <a href="carro.html"><img src="invisivel.png" alt="Carrinho" width=30 height=30></a>
-    </nav>
-    
-      
-   
-  </header>
+    <a href="index.html" class="voltar-inicio">Voltar para a Página Inicial</a>
 
-  <div class="banner">
-    Produtos frescos direto do produtor!
-  </div>
-
-  <section class="produtos">
-    <h2>Produtos</h2>
-    <div class="card-container">
-
-      <div class="card">
-        <div class="imagem">Imagem Maçã</div>
-        <h3>Maçã</h3>
-        <p>R$ 5,00</p>
-        <button class="btn">Comprar</button>
-      </div>
-
-      <div class="card">
-        <div class="imagem">Imagem Pão</div>
-        <h3>Pão Artesanal</h3>
-        <p>R$ 15,00</p>
-        <button class="btn">Comprar</button>
-      </div>
-
-      <div class="card">
-        <div class="imagem">Imagem Cenoura</div>
-        <h3>Cenoura</h3>
-        <p>R$ 4,00</p>
-        <button class="btn">Comprar</button>
-      </div>
-
-      <div class="card">
-        <div class="imagem">Imagem Couve-flor</div>
-        <h3>Mel</h3>
-        <p>R$ 25,00</p>
-        <button class="btn">Comprar</button>
-      </div>
-
-      <div class="card">
-        <div class="imagem">Imagem Mel</div>
-        <h3>Mel</h3>
-        <p>R$ 25,00</p>
-        <button class="btn">Comprar</button>
-      </div>
-
+    <h1>LOJA DA LURDES - Contatos</h1>
+    <div class="container">
+        <div class="informacoes">
+            <div class="item-contato">
+                <div class="icone whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div>
+                    <strong>WhatsApp:</strong><br>
+                    <a href="https://wa.me/550012451234" class="links-contato" target="_blank">
+                        (00) 1245-1234 - Lurdes
+                    </a>
+                </div>
+            </div>
+            <div class="item-contato">
+                <div class="icone facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div>
+                    <strong>Facebook:</strong><br>
+                    <a href="https://facebook.com/LurdesHortifrutisArtesanais" class="links-contato" target="_blank">
+                        Lurdes Hortifrútis & Artesanais
+                    </a>
+                </div>
+            </div>
+            <div class="item-contato">
+                <div class="icone instagram">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div>
+                    <strong>Instagram:</strong><br>
+                    <a href="https://instagram.com/ArtesanaisDaLurdes" class="links-contato" target="_blank">
+                        @ArtesanaisDaLurdes
+                    </a>
+                </div>
+            </div>
+            <div class="email">
+                <strong>E-mail:</strong><br>
+                <a href="mailto:lurdeslurdinhalurdona@gmail.com" class="links-contato">
+                    lurdeslurdinhalurdona@gmail.com
+                </a>
+            </div>
+        </div>
+        <div class="perfil">
+            <img src="Lurdes.png" alt="Foto da Lurdes proprietária da loja" class="imagem-produto">
+        </div>
     </div>
-  </section>
-
-  <footer>
-    <p>Contato: evail@exemplo.com | (00) 1234-5678</p>
-    <p><a href="#">Termos</a> | <a href="#">Política</a></p>
-  </footer>
 
 </body>
 </html>

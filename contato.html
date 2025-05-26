@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatos - Lurdes Shop</title>
+    <title>Contatos - Loja da Lurdes</title>
+    <!-- Adicionando Font Awesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,7 +13,7 @@
             padding: 20px;
             color: #333;
         }
-        .back-home {
+        .voltar-inicio {
             display: inline-flex;
             align-items: center;
             text-decoration: none;
@@ -19,7 +21,7 @@
             margin-bottom: 20px;
             font-weight: bold;
         }
-        .back-home::before {
+        .voltar-inicio::before {
             content: "←";
             margin-right: 8px;
             font-size: 20px;
@@ -34,16 +36,16 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .info, .profile {
+        .informacoes, .perfil {
             flex: 1 1 300px;
             margin: 10px;
         }
-        .contact-item {
+        .item-contato {
             display: flex;
             align-items: center;
             margin: 15px 0;
         }
-        .icon-placeholder {
+        .icone {
             width: 50px;
             height: 50px;
             background: #d0f0d0;
@@ -52,14 +54,23 @@
             align-items: center;
             border-radius: 10px;
             margin-right: 15px;
-            font-size: 12px;
+            font-size: 20px;
             color: #3c763d;
+        }
+        .icone.whatsapp { color: #25D366; background-color: #e6f7e8; }
+        .icone.facebook { color: #1877F2; background-color: #e7f0fd; }
+        .icone.instagram { 
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-color: #fae8f3;
         }
         .email {
             margin-top: 20px;
             font-style: italic;
         }
-        .profile-placeholder {
+        .foto-perfil {
             width: 100%;
             height: 300px;
             background: #d0f0d0;
@@ -74,45 +85,72 @@
             text-align: center;
             color: #2f7d32;
         }
+        .imagem-produto {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            height: 300px;
+        }
+        .links-contato {
+            text-decoration: none;
+            color: #2f7d32;
+            font-weight: bold;
+        }
+        .links-contato:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
-    <a href="index.html" class="back-home">Voltar para Home</a>
+    <a href="index.html" class="voltar-inicio">Voltar para a Página Inicial</a>
 
-    <h1>LURDES Shop - Contatos</h1>
+    <h1>LOJA DA LURDES - Contatos</h1>
     <div class="container">
-        <div class="info">
-            <div class="contact-item">
-                <div class="icon-placeholder">Imagem</div>
+        <div class="informacoes">
+            <div class="item-contato">
+                <div class="icone whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
                 <div>
                     <strong>WhatsApp:</strong><br>
-                    00 1245-1234 - Lurdes
-                    <img src="whatsapp.png" alt="What" style="max-width: 100%; height: auto;">
+                    <a href="https://wa.me/550012451234" class="links-contato" target="_blank">
+                        (00) 1245-1234 - Lurdes
+                    </a>
                 </div>
             </div>
-            <div class="contact-item">
-                <div class="icon-placeholder">Imagem</div>
+            <div class="item-contato">
+                <div class="icone facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
                 <div>
                     <strong>Facebook:</strong><br>
-                    Lurdes Hortifrutis & Artesanais
+                    <a href="https://facebook.com/LurdesHortifrutisArtesanais" class="links-contato" target="_blank">
+                        Lurdes Hortifrútis & Artesanais
+                    </a>
                 </div>
             </div>
-            <div class="contact-item">
-                <div class="icon-placeholder">Imagem</div>
+            <div class="item-contato">
+                <div class="icone instagram">
+                    <i class="fab fa-instagram"></i>
+                </div>
                 <div>
                     <strong>Instagram:</strong><br>
-                    Artesanais da Lurdes
+                    <a href="https://instagram.com/ArtesanaisDaLurdes" class="links-contato" target="_blank">
+                        @ArtesanaisDaLurdes
+                    </a>
                 </div>
             </div>
             <div class="email">
-                <strong>Email:</strong><br>
-                lurdeslurdinhalurdona@gmail.com
+                <strong>E-mail:</strong><br>
+                <a href="mailto:lurdeslurdinhalurdona@gmail.com" class="links-contato">
+                    lurdeslurdinhalurdona@gmail.com
+                </a>
             </div>
         </div>
-        <div class="profile">
-            <div class="profile-placeholder">Imagem (Foto da Lurdes)</div>
-            <img src="s" alt="Descrição" style="max-width: 100%; height: auto;">
+        <div class="perfil">
+            <img src="Lurdes.png" alt="Foto da Lurdes proprietária da loja" class="imagem-produto">
         </div>
     </div>
 
