@@ -204,6 +204,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
     }
 
     .card:hover {
@@ -290,6 +291,64 @@
       opacity: 1;
     }
 
+    /* Estilos para o pop-up */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: var(--white);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      z-index: 1000;
+      display: none;
+      text-align: center;
+      max-width: 300px;
+      width: 90%;
+      animation: fadeIn 0.3s;
+    }
+
+    .popup h3 {
+      color: var(--primary-color);
+      margin-top: 0;
+    }
+
+    .popup p {
+      margin-bottom: 20px;
+    }
+
+    .popup-btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .popup-btn:hover {
+      background-color: var(--secondary-color);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -324,7 +383,6 @@
       <nav>
         <a href="index.html">Início</a>
         <a href="produtos.html">Produtos</a>
-        <a href="sobre.html">Sobre Nós</a>
         <a href="contato.html">Contato</a>
       </nav>
     </div>
@@ -334,9 +392,21 @@
     </div>
   </header>
 
-  <div class="banner">
-    <h1>Produtos frescos direto do produtor para sua família!</h1>
-  </div>
+  <div class="banner" style="
+  background-image: url('prods.png');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:  hex(#00CC00);
+  text-align: center;
+  padding: 0 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+">
+  <h1>Produtos frescos direto do produtor para sua família!</h1>
+</div>
 
   <main>
     <div class="history-section">
@@ -377,23 +447,32 @@
           <img src="Maçã.png" alt="Maçãs frescas" class="product-image">
           <div class="product-name">Maçãs Orgânicas</div>
           <div class="product-price">R$7,77/kg</div>
-          <button class="btn">Adicionar ao Carrinho</button>
+          <button class="btn add-to-cart">Adicionar ao Carrinho</button>
         </div>
         <div class="card">
           <img src="Pote_d_mel.png" alt="Pote de mel artesanal" class="product-image">
           <div class="product-name">Mel Puro 500g</div>
           <div class="product-price">R$17,93</div>
-          <button class="btn">Adicionar ao Carrinho</button>
+          <button class="btn add-to-cart">Adicionar ao Carrinho</button>
         </div>
         <div class="card">
           <img src="Cenoura.png" alt="Cenouras frescas" class="product-image">
           <div class="product-name">Cenouras Orgânicas</div>
           <div class="product-price">R$3,50/kg</div>
-          <button class="btn">Adicionar ao Carrinho</button>
+          <button class="btn add-to-cart">Adicionar ao Carrinho</button>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Pop-up de confirmação -->
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup">
+    <h3>Produto Adicionado!</h3>
+    <p>O item foi adicionado ao seu carrinho com sucesso.</p>
+    <button class="popup-btn" id="closePopup">Continuar Comprando</button>
+    <button class="popup-btn" onclick="window.location.href='carrinho.html'">Ir para o Carrinho</button>
+  </div>
 
   <footer>
     <div class="footer-content">
@@ -407,5 +486,40 @@
       <p>Contato: (00) 1234-5678 | contato@lurdesshop.com.br</p>
     </div>
   </footer>
+
+  <script>
+    // Seleciona todos os botões "Adicionar ao Carrinho"
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const popup = document.getElementById('popup');
+    const overlay = document.getElementById('overlay');
+    const closePopup = document.getElementById('closePopup');
+
+    // Adiciona evento de clique a cada botão
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Obtém o nome do produto
+        const productName = this.parentElement.querySelector('.product-name').textContent;
+        
+        // Atualiza a mensagem no pop-up
+        document.querySelector('#popup h3').textContent = `${productName} adicionado!`;
+        
+        // Mostra o pop-up e o overlay
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+      });
+    });
+
+    // Fecha o pop-up quando clicar no botão "Continuar Comprando"
+    closePopup.addEventListener('click', function() {
+      popup.style.display = 'none';
+      overlay.style.display = 'none';
+    });
+
+    // Fecha o pop-up quando clicar no overlay
+    overlay.addEventListener('click', function() {
+      popup.style.display = 'none';
+      overlay.style.display = 'none';
+    });
+  </script>
 </body>
 </html>

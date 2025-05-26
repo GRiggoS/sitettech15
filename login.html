@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - LURDES Shop</title>
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2f7d32;
+      --secondary-color: #3B7A57;
+      --light-green: #e6f5e6;
+      --white: #ffffff;
+      --text-color: #333;
+      --light-gray: #f5f5f5;
+      --border-color: #ddd;
+      --error-color: #e74c3c;
+      --link-color: #3498db;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light-green);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      line-height: 1.6;
+      background-image: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 1000px;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .login-header {
+      width: 100%;
+      padding: 25px 30px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+    }
+
+    .login-header a {
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+
+    .login-header a:hover {
+      opacity: 0.9;
+    }
+
+    .login-header a i {
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .login-header h1 {
+      font-family: 'Playfair Display', serif;
+      margin-left: 20px;
+      flex-grow: 1;
+      font-size: 28px;
+    }
+
+    .form-section {
+      flex: 1;
+      min-width: 300px;
+      padding: 40px;
+    }
+
+    .form-section h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      font-size: 28px;
+      position: relative;
+    }
+
+    .form-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    .input-with-icon {
+      position: relative;
+    }
+
+    .input-with-icon i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary-color);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px 12px 45px;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 15px;
+      transition: all 0.3s;
+      background-color: var(--light-gray);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(47, 125, 50, 0.2);
+      background-color: var(--white);
+    }
+
+    .form-actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      flex: 1;
+      min-width: 150px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-secondary {
+      background-color: var(--white);
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--light-green);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-links {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .login-links a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .login-links a:hover {
+      text-decoration: underline;
+      color: var(--primary-color);
+    }
+
+    .image-section {
+      flex: 1;
+      min-width: 300px;
+      background: linear-gradient(rgba(47, 125, 50, 0.7), rgba(47, 125, 50, 0.7)), 
+                  url('https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .image-section img {
+      max-width: 200px;
+      margin-bottom: 30px;
+      filter: brightness(0) invert(1);
+    }
+
+    .image-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .image-section p {
+      font-size: 15px;
+      opacity: 0.9;
+      max-width: 350px;
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .remember-me input {
+      width: auto;
+    }
+
+    @media (max-width: 768px) {
+      .login-container {
+        flex-direction: column;
+      }
+
+      .form-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .image-section {
+        order: -1;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <a href="index.html">
+        <i class="fas fa-arrow-left"></i> Voltar
+      </a>
+      <h1>LURDES Shop</h1>
+    </div>
+
+    <div class="form-section">
+      <h2>Bem-vindo de volta</h2>
+      <form action="/login" method="post">
+        <div class="form-group">
+          <label for="user">E-mail ou Telefone</label>
+          <div class="input-with-icon">
+            <i class="fas fa-user"></i>
+            <input type="text" id="user" name="user" placeholder="exemplo@email.com ou (00) 91234-5678" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <div class="input-with-icon">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+          </div>
+          <div class="remember-forgot">
+            <label class="remember-me">
+              <input type="checkbox"> Lembrar-me
+            </label>
+            <a href="recuperar-senha.html">Esqueceu a senha?</a>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt"></i> Entrar
+          </button>
+          <a href="conta.html" class="btn btn-secondary">
+            <i class="fas fa-user-plus"></i> Criar Conta
+          </a>
+        </div>
+        
+        <div class="login-links">
+          <p>É novo por aqui? <a href="conta.html">Cadastre-se agora</a></p>
+        </div>
+      </form>
+    </div>
+
+    <div class="image-section">
+      <h3>Produtos Naturais & Artesanais</h3>
+      <p>Conecte-se à sua conta para acompanhar pedidos, favoritos e promoções exclusivas</p>
+    </div>
+  </div>
+</body>
+</html>
