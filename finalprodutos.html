@@ -69,6 +69,7 @@
     .nav-icons a {
       color: var(--text-color);
       transition: color 0.3s;
+      position: relative;
     }
 
     .nav-icons a:hover {
@@ -78,6 +79,21 @@
     .nav-icons img {
       width: 24px;
       height: 24px;
+    }
+
+    #cart-counter {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
     }
 
     .main-container {
@@ -350,7 +366,7 @@
     </a>
     <div class="nav-icons">
       <a href="conta.html"><i class="fas fa-user"></i></a>
-      <a href="carrinho.html"><i class="fas fa-shopping-cart"></i></a>
+      <a href="carrinho.html"><i class="fas fa-shopping-cart"><span id="cart-counter"></span></i></a>
     </div>
   </header>
 
@@ -383,7 +399,7 @@
           <p class="product-description">Laranjas frescas e suculentas, perfeitas para sucos e consumo direto.</p>
           <div class="product-price">R$ 7,90/kg</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod10', 'Laranja', 'Frutas Cítricas', 7.90, 'laranja.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -396,7 +412,7 @@
       <!-- Produto 2 - Banana -->
       <div class="product-card">
         <div style="position: relative;">
-          <img src="https://images.unsplash.com/photo-1603833665858-e61d17a86224?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Banana" class="product-image">
+          <img src="banana.png" alt="Banana" class="product-image">
           <span class="product-badge">Frutas</span>
         </div>
         <div class="product-details">
@@ -405,7 +421,7 @@
           <p class="product-description">Bananas maduras e saborosas, fonte de potássio e energia.</p>
           <div class="product-price">R$ 5,50/kg</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod11', 'Banana', 'Frutas', 5.50, 'banana.jpg')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -427,7 +443,7 @@
           <p class="product-description">Alface fresca e crocante, ideal para saladas e sanduíches.</p>
           <div class="product-price">R$ 7,50/un</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod12', 'Alface Crespa', 'Folhosas', 7.50, 'alface.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -449,7 +465,7 @@
           <p class="product-description">Couve orgânica, rica em nutrientes, perfeita para refogados e sucos.</p>
           <div class="product-price">R$ 7,80/maço</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod13', 'Couve Orgânica', 'Folhosas', 7.80, 'couve.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -471,7 +487,7 @@
           <p class="product-description">Almeirão fresco, com sabor característico, ótimo para saladas.</p>
           <div class="product-price">R$ 3,90/maço</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod14', 'Almeirão', 'Folhosas', 3.90, 'almeirao.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -493,7 +509,7 @@
           <p class="product-description">Rúcula orgânica, sabor marcante, perfeita para saladas e pizzas.</p>
           <div class="product-price">R$ 5,50/maço</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod15', 'Rúcula Orgânica', 'Folhosas', 5.50, 'rucula.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -515,7 +531,7 @@
           <p class="product-description">Salsinha fresca, ideal para temperar diversos pratos.</p>
           <div class="product-price">R$ 6,50/maço</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod16', 'Salsinha', 'Temperos Frescos', 6.50, 'salsinha.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -537,7 +553,7 @@
           <p class="product-description">Cebolinha fresca, combina perfeitamente com a salsinha.</p>
           <div class="product-price">R$ 5,50/maço</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod17', 'Cebolinha', 'Temperos Frescos', 5.50, 'cebolinha.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -572,6 +588,63 @@
   </footer>
 
   <script>
+    // Função para adicionar produto ao carrinho
+    function addToCart(productId, productName, productCategory, productPrice, productImage) {
+      // Recupera o carrinho do localStorage ou cria um novo se não existir
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      // Verifica se o produto já está no carrinho
+      const existingItem = cart.find(item => item.id === productId);
+      
+      if (existingItem) {
+        // Se já existe, aumenta a quantidade
+        existingItem.quantity += 1;
+      } else {
+        // Se não existe, adiciona novo item
+        cart.push({
+          id: productId,
+          name: productName,
+          category: productCategory,
+          price: productPrice,
+          quantity: 1,
+          image: productImage
+        });
+      }
+      
+      // Salva o carrinho atualizado no localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      // Feedback visual
+      const button = event.target.closest('.add-to-cart');
+      if (button) {
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i> Adicionado';
+        button.style.backgroundColor = '#4CAF50';
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.style.backgroundColor = '';
+        }, 2000);
+      }
+      
+      // Atualiza o contador do carrinho no header
+      updateCartCounter();
+    }
+    
+    // Função para atualizar o contador do carrinho no header
+    function updateCartCounter() {
+      const cartCounter = document.getElementById('cart-counter');
+      if (cartCounter) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCounter.textContent = totalItems;
+        cartCounter.style.display = totalItems > 0 ? 'flex' : 'none';
+      }
+    }
+    
+    // Atualiza o contador quando a página carrega
+    document.addEventListener('DOMContentLoaded', updateCartCounter);
+
     // Filtros de produtos
     const filterBtns = document.querySelectorAll('.filter-btn');
     
@@ -584,28 +657,6 @@
         
         // Aqui você implementaria a lógica para filtrar os produtos
         // Por simplicidade, estamos apenas demonstrando a interação
-      });
-    });
-
-    // Adicionar ao carrinho
-    const addToCartBtns = document.querySelectorAll('.add-to-cart');
-    
-    addToCartBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        const productCard = this.closest('.product-card');
-        const productName = productCard.querySelector('.product-name').textContent;
-        
-        // Simulação de adição ao carrinho
-        this.innerHTML = '<i class="fas fa-check"></i> Adicionado';
-        this.style.backgroundColor = '#4CAF50';
-        
-        setTimeout(() => {
-          this.innerHTML = '<i class="fas fa-cart-plus"></i> Adicionar';
-          this.style.backgroundColor = '';
-        }, 2000);
-        
-        // Aqui você implementaria a lógica real para adicionar ao carrinho
-        console.log(`${productName} adicionado ao carrinho`);
       });
     });
 

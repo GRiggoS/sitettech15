@@ -69,6 +69,7 @@
     .nav-icons a {
       color: var(--text-color);
       transition: color 0.3s;
+      position: relative;
     }
 
     .nav-icons a:hover {
@@ -78,6 +79,21 @@
     .nav-icons img {
       width: 24px;
       height: 24px;
+    }
+
+    #cart-counter {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
     }
 
     .main-container {
@@ -350,7 +366,7 @@
     </a>
     <div class="nav-icons">
       <a href="conta.html"><i class="fas fa-user"></i></a>
-      <a href="carrinho.html"><i class="fas fa-shopping-cart"></i></a>
+      <a href="carrinho.html"><i class="fas fa-shopping-cart"><span id="cart-counter"></span></i></a>
     </div>
   </header>
 
@@ -383,7 +399,7 @@
           <p class="product-description">Abacaxi fresco e suculento, perfeito para sucos e sobremesas.</p>
           <div class="product-price">R$ 18,99/un</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod1', 'Abacaxi', 'Frutas Tropicais', 18.99, 'abacaxi.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -405,7 +421,7 @@
           <p class="product-description">Uvas verdes doces e crocantes, sem sementes, embalagem de 500g.</p>
           <div class="product-price">R$ 22,00/500g</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod2', 'Uva Verde (sem semente)', 'Frutas', 22.00, 'uvaverdes.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -427,7 +443,7 @@
           <p class="product-description">Mangas maduras e doces, perfeitas para consumo imediato.</p>
           <div class="product-price">R$ 6,99/kg</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod3', 'Manga', 'Frutas Tropicais', 6.99, 'manga.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -449,7 +465,7 @@
           <p class="product-description">Goiabas vermelhas e suculentas, ricas em vitamina C.</p>
           <div class="product-price">R$ 9,50/kg</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod4', 'Goiaba', 'Frutas', 9.50, 'goiaba.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -471,7 +487,7 @@
           <p class="product-description">Quiabo fresco, ideal para moquecas e refogados.</p>
           <div class="product-price">R$ 8,90/kg</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod5', 'Quiabo', 'Legumes', 8.90, 'quiabo.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -493,7 +509,7 @@
           <p class="product-description">Chuchu fresco, versátil para diversos tipos de preparo.</p>
           <div class="product-price">R$ 3,90/kg</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod6', 'Chuchu', 'Legumes', 3.90, 'chuchu.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -515,7 +531,7 @@
           <p class="product-description">Batata doce orgânica, rica em nutrientes e fibras.</p>
           <div class="product-price">R$ 7,50/kg</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod7', 'Batata Doce', 'Tubérculos', 7.50, 'batatadoce.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -537,7 +553,7 @@
           <p class="product-description">Inhame orgânico, excelente para sopas e cozidos.</p>
           <div class="product-price">R$ 9,90/kg</div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod8', 'Inhame', 'Tubérculos', 9.90, 'inhame.png')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -550,7 +566,7 @@
       <!-- Produto 9 - Batata Inglesa -->
       <div class="product-card">
         <div style="position: relative;">
-          <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Batata Inglesa" class="product-image">
+          <img src="batata.png" alt="Batata Inglesa" class="product-image">
           <span class="product-badge">Promoção</span>
         </div>
         <div class="product-details">
@@ -559,7 +575,7 @@
           <p class="product-description">Batata inglesa fresca, ideal para fritas e purês.</p>
           <div class="product-price">R$ 5,90/kg <small style="text-decoration: line-through; color: #999; font-size: 0.9rem;">R$ 7,90</small></div>
           <div class="product-actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart('prod9', 'Batata Inglesa', 'Tubérculos', 5.90, 'batata-inglesa.jpg')">
               <i class="fas fa-cart-plus"></i> Adicionar
             </button>
             <button class="wishlist-btn">
@@ -598,6 +614,63 @@
   </footer>
 
   <script>
+    // Função para adicionar produto ao carrinho
+    function addToCart(productId, productName, productCategory, productPrice, productImage) {
+      // Recupera o carrinho do localStorage ou cria um novo se não existir
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      // Verifica se o produto já está no carrinho
+      const existingItem = cart.find(item => item.id === productId);
+      
+      if (existingItem) {
+        // Se já existe, aumenta a quantidade
+        existingItem.quantity += 1;
+      } else {
+        // Se não existe, adiciona novo item
+        cart.push({
+          id: productId,
+          name: productName,
+          category: productCategory,
+          price: productPrice,
+          quantity: 1,
+          image: productImage
+        });
+      }
+      
+      // Salva o carrinho atualizado no localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      // Feedback visual
+      const button = event.target.closest('.add-to-cart');
+      if (button) {
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i> Adicionado';
+        button.style.backgroundColor = '#4CAF50';
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.style.backgroundColor = '';
+        }, 2000);
+      }
+      
+      // Atualiza o contador do carrinho no header
+      updateCartCounter();
+    }
+    
+    // Função para atualizar o contador do carrinho no header
+    function updateCartCounter() {
+      const cartCounter = document.getElementById('cart-counter');
+      if (cartCounter) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCounter.textContent = totalItems;
+        cartCounter.style.display = totalItems > 0 ? 'flex' : 'none';
+      }
+    }
+    
+    // Atualiza o contador quando a página carrega
+    document.addEventListener('DOMContentLoaded', updateCartCounter);
+
     // Filtros de produtos
     const filterBtns = document.querySelectorAll('.filter-btn');
     
@@ -612,29 +685,6 @@
         // Por simplicidade, estamos apenas demonstrando a interação
       });
     });
-
-    // Adicionar ao carrinho
-    const addToCartBtns = document.querySelectorAll('.add-to-cart');
-    
-    addToCartBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        const productCard = this.closest('.product-card');
-        const productName = productCard.querySelector('.product-name').textContent;
-        
-        // Simulação de adição ao carrinho
-        this.innerHTML = '<i class="fas fa-check"></i> Adicionado';
-        this.style.backgroundColor = '#4CAF50';
-        
-        setTimeout(() => {
-          this.innerHTML = '<i class="fas fa-cart-plus"></i> Adicionar';
-          this.style.backgroundColor = '';
-        }, 2000);
-        
-        // Aqui você implementaria a lógica real para adicionar ao carrinho
-        console.log(`${productName} adicionado ao carrinho`);
-      });
-    });
-
     // Lista de desejos
     const wishlistBtns = document.querySelectorAll('.wishlist-btn');
     

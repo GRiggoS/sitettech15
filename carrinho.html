@@ -359,7 +359,7 @@
           <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
         </button>
         <button class="checkout-btn finish-btn" onclick="checkout()">
-          <i class="fas fa-credit-card"></i> Finalizar Pedido
+          <i class="fas fa-credit-card"></i> Finalizar Pedido = 
         </button>
       </div>
     </div>
@@ -484,7 +484,7 @@
       message += `\nSubtotal: R$ ${subtotal.toFixed(2)}`;
       message += `\nFrete: R$ ${shipping.toFixed(2)}`;
       message += `\nTotal: R$ ${total.toFixed(2)}\n\n`;
-      message += 'Por favor, confirme o pedido. Obrigado!';
+      message += 'Por favor, confirme. Obrigado!';
       
       const phoneNumber = '5543991300761'; // Substitua pelo número da loja
       const encodedMessage = encodeURIComponent(message);
