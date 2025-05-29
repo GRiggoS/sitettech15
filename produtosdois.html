@@ -348,6 +348,36 @@
       opacity: 0.8;
     }
 
+    /* Estilos para a mensagem de "ver na próxima página" */
+    .no-products-message {
+      text-align: center;
+      padding: 40px;
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+    }
+
+    .no-products-message i {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+
     @media (max-width: 768px) {
       .product-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -377,216 +407,17 @@
     </div>
 
     <div class="product-filters">
-      <button class="filter-btn active">Todos</button>
-      <button class="filter-btn">Frutas</button>
-      <button class="filter-btn">Orgânicos</button>
-      <button class="filter-btn">Legumes</button>
-      <button class="filter-btn">Verduras</button>
-      <button class="filter-btn">Artesanais</button>
-      <button class="filter-btn">Promoções</button>
+      <button class="filter-btn active" data-category="all">Todos</button>
+      <button class="filter-btn" data-category="frutas">Frutas</button>
+      <button class="filter-btn" data-category="organicos">Orgânicos</button>
+      <button class="filter-btn" data-category="legumes">Legumes</button>
+      <button class="filter-btn" data-category="verduras">Verduras</button>
+      <button class="filter-btn" data-category="artesanais">Artesanais</button>
+      <button class="filter-btn" data-category="promocoes">Promoções</button>
     </div>
 
-    <div class="product-grid">
-      <!-- Produto 1 - Abacaxi -->
-      <div class="product-card">
-        <div style="position: relative;">
-          <img src="abacaxi.png" alt="Abacaxi" class="product-image">
-          <span class="product-badge">Frutas</span>
-        </div>
-        <div class="product-details">
-          <span class="product-category">Frutas Tropicais</span>
-          <h3 class="product-name">Abacaxi</h3>
-          <p class="product-description">Abacaxi fresco e suculento, perfeito para sucos e sobremesas.</p>
-          <div class="product-price">R$ 18,99/un</div>
-          <div class="product-actions">
-            <button class="add-to-cart" onclick="addToCart('prod1', 'Abacaxi', 'Frutas Tropicais', 18.99, 'abacaxi.png')">
-              <i class="fas fa-cart-plus"></i> Adicionar
-            </button>
-            <button class="wishlist-btn">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produto 2 - Uva verde -->
-      <div class="product-card">
-        <div style="position: relative;">
-          <img src="uvaverdes.png" alt="Uva verde sem semente" class="product-image">
-          <span class="product-badge">Frutas</span>
-        </div>
-        <div class="product-details">
-          <span class="product-category">Frutas</span>
-          <h3 class="product-name">Uva Verde (sem semente)</h3>
-          <p class="product-description">Uvas verdes doces e crocantes, sem sementes, embalagem de 500g.</p>
-          <div class="product-price">R$ 22,00/500g</div>
-          <div class="product-actions">
-            <button class="add-to-cart" onclick="addToCart('prod2', 'Uva Verde (sem semente)', 'Frutas', 22.00, 'uvaverdes.png')">
-              <i class="fas fa-cart-plus"></i> Adicionar
-            </button>
-            <button class="wishlist-btn">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produto 3 - Manga -->
-      <div class="product-card">
-        <div style="position: relative;">
-          <img src="manga.png" alt="Manga" class="product-image">
-          <span class="product-badge">Frutas</span>
-        </div>
-        <div class="product-details">
-          <span class="product-category">Frutas Tropicais</span>
-          <h3 class="product-name">Manga</h3>
-          <p class="product-description">Mangas maduras e doces, perfeitas para consumo imediato.</p>
-          <div class="product-price">R$ 6,99/kg</div>
-          <div class="product-actions">
-            <button class="add-to-cart" onclick="addToCart('prod3', 'Manga', 'Frutas Tropicais', 6.99, 'manga.png')">
-              <i class="fas fa-cart-plus"></i> Adicionar
-            </button>
-            <button class="wishlist-btn">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produto 4 - Goiaba -->
-      <div class="product-card">
-        <div style="position: relative;">
-          <img src="goiaba.png" alt="Goiaba" class="product-image">
-          <span class="product-badge">Frutas</span>
-        </div>
-        <div class="product-details">
-          <span class="product-category">Frutas</span>
-          <h3 class="product-name">Goiaba</h3>
-          <p class="product-description">Goiabas vermelhas e suculentas, ricas em vitamina C.</p>
-          <div class="product-price">R$ 9,50/kg</div>
-          <div class="product-actions">
-            <button class="add-to-cart" onclick="addToCart('prod4', 'Goiaba', 'Frutas', 9.50, 'goiaba.png')">
-              <i class="fas fa-cart-plus"></i> Adicionar
-            </button>
-            <button class="wishlist-btn">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produto 5 - Quiabo -->
-      <div class="product-card">
-        <div style="position: relative;">
-          <img src="quiabo.png" alt="Quiabo" class="product-image">
-          <span class="product-badge">Legumes</span>
-        </div>
-        <div class="product-details">
-          <span class="product-category">Legumes</span>
-          <h3 class="product-name">Quiabo</h3>
-          <p class="product-description">Quiabo fresco, ideal para moquecas e refogados.</p>
-          <div class="product-price">R$ 8,90/kg</div>
-          <div class="product-actions">
-            <button class="add-to-cart" onclick="addToCart('prod5', 'Quiabo', 'Legumes', 8.90, 'quiabo.png')">
-              <i class="fas fa-cart-plus"></i> Adicionar
-            </button>
-            <button class="wishlist-btn">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produto 6 - Chuchu -->
-      <div class="product-card">
-        <div style="position: relative;">
-          <img src="chuchu.png" alt="Chuchu" class="product-image">
-          <span class="product-badge">Legumes</span>
-        </div>
-        <div class="product-details">
-          <span class="product-category">Legumes</span>
-          <h3 class="product-name">Chuchu</h3>
-          <p class="product-description">Chuchu fresco, versátil para diversos tipos de preparo.</p>
-          <div class="product-price">R$ 3,90/kg</div>
-          <div class="product-actions">
-            <button class="add-to-cart" onclick="addToCart('prod6', 'Chuchu', 'Legumes', 3.90, 'chuchu.png')">
-              <i class="fas fa-cart-plus"></i> Adicionar
-            </button>
-            <button class="wishlist-btn">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produto 7 - Batata Doce -->
-      <div class="product-card">
-        <div style="position: relative;">
-          <img src="batatadoce.png" alt="Batata Doce" class="product-image">
-          <span class="product-badge">Orgânico</span>
-        </div>
-        <div class="product-details">
-          <span class="product-category">Tubérculos</span>
-          <h3 class="product-name">Batata Doce</h3>
-          <p class="product-description">Batata doce orgânica, rica em nutrientes e fibras.</p>
-          <div class="product-price">R$ 7,50/kg</div>
-          <div class="product-actions">
-            <button class="add-to-cart" onclick="addToCart('prod7', 'Batata Doce', 'Tubérculos', 7.50, 'batatadoce.png')">
-              <i class="fas fa-cart-plus"></i> Adicionar
-            </button>
-            <button class="wishlist-btn">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produto 8 - Inhame -->
-      <div class="product-card">
-        <div style="position: relative;">
-          <img src="inhame.png" alt="Inhame" class="product-image">
-          <span class="product-badge">Orgânico</span>
-        </div>
-        <div class="product-details">
-          <span class="product-category">Tubérculos</span>
-          <h3 class="product-name">Inhame</h3>
-          <p class="product-description">Inhame orgânico, excelente para sopas e cozidos.</p>
-          <div class="product-price">R$ 9,90/kg</div>
-          <div class="product-actions">
-            <button class="add-to-cart" onclick="addToCart('prod8', 'Inhame', 'Tubérculos', 9.90, 'inhame.png')">
-              <i class="fas fa-cart-plus"></i> Adicionar
-            </button>
-            <button class="wishlist-btn">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produto 9 - Batata Inglesa -->
-      <div class="product-card">
-        <div style="position: relative;">
-          <img src="batata.png" alt="Batata Inglesa" class="product-image">
-          <span class="product-badge">Promoção</span>
-        </div>
-        <div class="product-details">
-          <span class="product-category">Tubérculos</span>
-          <h3 class="product-name">Batata Inglesa</h3>
-          <p class="product-description">Batata inglesa fresca, ideal para fritas e purês.</p>
-          <div class="product-price">R$ 5,90/kg <small style="text-decoration: line-through; color: #999; font-size: 0.9rem;">R$ 7,90</small></div>
-          <div class="product-actions">
-            <button class="add-to-cart" onclick="addToCart('prod9', 'Batata Inglesa', 'Tubérculos', 5.90, 'batata-inglesa.jpg')">
-              <i class="fas fa-cart-plus"></i> Adicionar
-            </button>
-            <button class="wishlist-btn">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-          </div>
-        </div>
-      </div>
+    <div class="product-grid" id="product-grid">
+      <!-- Produtos serão carregados dinamicamente via JavaScript -->
     </div>
 
     <!-- Botões de navegação -->
@@ -614,6 +445,195 @@
   </footer>
 
   <script>
+    // Dados dos produtos
+    const products = [
+      {
+        id: 'prod1',
+        name: 'Abacaxi',
+        category: 'frutas',
+        subcategory: 'Frutas Tropicais',
+        description: 'Abacaxi fresco e suculento, perfeito para sucos e sobremesas.',
+        price: 18.99,
+        unit: 'un',
+        image: 'abacaxi.png',
+        badge: 'Frutas'
+      },
+      {
+        id: 'prod2',
+        name: 'Uva Verde (sem semente)',
+        category: 'frutas',
+        subcategory: 'Frutas',
+        description: 'Uvas verdes doces e crocantes, sem sementes, embalagem de 500g.',
+        price: 22.00,
+        unit: '500g',
+        image: 'uvaverdes.png',
+        badge: 'Frutas'
+      },
+      {
+        id: 'prod3',
+        name: 'Manga',
+        category: 'frutas',
+        subcategory: 'Frutas Tropicais',
+        description: 'Mangas maduras e doces, perfeitas para consumo imediato.',
+        price: 6.99,
+        unit: 'kg',
+        image: 'manga.png',
+        badge: 'Frutas'
+      },
+      {
+        id: 'prod4',
+        name: 'Goiaba',
+        category: 'frutas',
+        subcategory: 'Frutas',
+        description: 'Goiabas vermelhas e suculentas, ricas em vitamina C.',
+        price: 9.50,
+        unit: 'kg',
+        image: 'goiaba.png',
+        badge: 'Frutas'
+      },
+      {
+        id: 'prod5',
+        name: 'Quiabo',
+        category: 'legumes',
+        subcategory: 'Legumes',
+        description: 'Quiabo fresco, ideal para moquecas e refogados.',
+        price: 8.90,
+        unit: 'kg',
+        image: 'quiabo.png',
+        badge: 'Legumes'
+      },
+      {
+        id: 'prod6',
+        name: 'Chuchu',
+        category: 'legumes',
+        subcategory: 'Legumes',
+        description: 'Chuchu fresco, versátil para diversos tipos de preparo.',
+        price: 3.90,
+        unit: 'kg',
+        image: 'chuchu.png',
+        badge: 'Legumes'
+      },
+      {
+        id: 'prod7',
+        name: 'Batata Doce',
+        category: 'organicos',
+        subcategory: 'Tubérculos',
+        description: 'Batata doce orgânica, rica em nutrientes e fibras.',
+        price: 7.50,
+        unit: 'kg',
+        image: 'batatadoce.png',
+        badge: 'Orgânico'
+      },
+      {
+        id: 'prod8',
+        name: 'Inhame',
+        category: 'organicos',
+        subcategory: 'Tubérculos',
+        description: 'Inhame orgânico, excelente para sopas e cozidos.',
+        price: 9.90,
+        unit: 'kg',
+        image: 'inhame.png',
+        badge: 'Orgânico'
+      },
+      {
+        id: 'prod9',
+        name: 'Batata Inglesa',
+        category: 'promocoes',
+        subcategory: 'Tubérculos',
+        description: 'Batata inglesa fresca, ideal para fritas e purês.',
+        price: 5.90,
+        oldPrice: 7.90,
+        unit: 'kg',
+        image: 'batata.png',
+        badge: 'Promoção'
+      }
+    ];
+
+    // Função para renderizar os produtos
+    function renderProducts(filter = 'all') {
+      const productGrid = document.getElementById('product-grid');
+      productGrid.innerHTML = '';
+      
+      // Filtrar produtos
+      let filteredProducts = [];
+      if (filter === 'all') {
+        filteredProducts = products;
+      } else {
+        filteredProducts = products.filter(product => product.category === filter);
+      }
+      
+      // Verificar se há produtos para exibir
+      if (filteredProducts.length === 0) {
+        const noProductsMessage = document.createElement('div');
+        noProductsMessage.className = 'no-products-message';
+        noProductsMessage.innerHTML = `
+          <i class="fas fa-arrow-down"></i>
+          <h3>Nenhum produto encontrado nesta categoria</h3>
+          <p>Verifique na próxima página ou selecione outra categoria</p>
+        `;
+        productGrid.appendChild(noProductsMessage);
+        return;
+      }
+      
+      // Renderizar produtos
+      filteredProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        
+        let priceHTML = `R$ ${product.price.toFixed(2).replace('.', ',')}/${product.unit}`;
+        if (product.oldPrice) {
+          priceHTML += ` <small style="text-decoration: line-through; color: #999; font-size: 0.9rem;">R$ ${product.oldPrice.toFixed(2).replace('.', ',')}</small>`;
+        }
+        
+        productCard.innerHTML = `
+          <div style="position: relative;">
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <span class="product-badge">${product.badge}</span>
+          </div>
+          <div class="product-details">
+            <span class="product-category">${product.subcategory}</span>
+            <h3 class="product-name">${product.name}</h3>
+            <p class="product-description">${product.description}</p>
+            <div class="product-price">${priceHTML}</div>
+            <div class="product-actions">
+              <button class="add-to-cart" onclick="addToCart('${product.id}', '${product.name}', '${product.subcategory}', ${product.price}, '${product.image}')">
+                <i class="fas fa-cart-plus"></i> Adicionar
+              </button>
+              <button class="wishlist-btn">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        `;
+        
+        productGrid.appendChild(productCard);
+      });
+      
+      // Reaplicar os eventos dos botões de wishlist
+      applyWishlistEvents();
+    }
+
+    // Função para aplicar eventos aos botões de wishlist
+    function applyWishlistEvents() {
+      const wishlistBtns = document.querySelectorAll('.wishlist-btn');
+      
+      wishlistBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const icon = this.querySelector('i');
+          
+          if (icon.classList.contains('far')) {
+            icon.classList.remove('far');
+            icon.classList.add('fas');
+            icon.style.color = '#e74c3c';
+          } else {
+            icon.classList.remove('fas');
+            icon.classList.add('far');
+            icon.style.color = '';
+          }
+        });
+      });
+    }
+
     // Função para adicionar produto ao carrinho
     function addToCart(productId, productName, productCategory, productPrice, productImage) {
       // Recupera o carrinho do localStorage ou cria um novo se não existir
@@ -669,38 +689,24 @@
     }
     
     // Atualiza o contador quando a página carrega
-    document.addEventListener('DOMContentLoaded', updateCartCounter);
-
-    // Filtros de produtos
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Remove a classe active de todos os botões
-        filterBtns.forEach(b => b.classList.remove('active'));
-        // Adiciona a classe active apenas no botão clicado
-        btn.classList.add('active');
-        
-        // Aqui você implementaria a lógica para filtrar os produtos
-        // Por simplicidade, estamos apenas demonstrando a interação
-      });
-    });
-    // Lista de desejos
-    const wishlistBtns = document.querySelectorAll('.wishlist-btn');
-    
-    wishlistBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        const icon = this.querySelector('i');
-        
-        if (icon.classList.contains('far')) {
-          icon.classList.remove('far');
-          icon.classList.add('fas');
-          icon.style.color = '#e74c3c';
-        } else {
-          icon.classList.remove('fas');
-          icon.classList.add('far');
-          icon.style.color = '';
-        }
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartCounter();
+      renderProducts(); // Renderiza todos os produtos inicialmente
+      
+      // Filtros de produtos
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove a classe active de todos os botões
+          filterBtns.forEach(b => b.classList.remove('active'));
+          // Adiciona a classe active apenas no botão clicado
+          btn.classList.add('active');
+          
+          // Filtra os produtos pela categoria selecionada
+          const category = btn.getAttribute('data-category');
+          renderProducts(category);
+        });
       });
     });
   </script>

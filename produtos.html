@@ -350,6 +350,34 @@
       opacity: 0.8;
     }
 
+    /* Estilos para a mensagem de categoria vazia */
+    .empty-category {
+      text-align: center;
+      grid-column: 1 / -1;
+      padding: 40px 0;
+      color: #666;
+    }
+
+    .empty-category i {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-top: 20px;
+      display: block;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+
     @media (max-width: 768px) {
       .product-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -382,18 +410,18 @@
     </div>
 
     <div class="product-filters">
-      <button class="filter-btn active">Todos</button>
-      <button class="filter-btn">Frutas</button>
-      <button class="filter-btn">Orgânicos</button>
-      <button class="filter-btn">Legumes</button>
-      <button class="filter-btn">Verduras</button>
-      <button class="filter-btn">Artesanais</button>
-      <button class="filter-btn">Promoções</button>
+      <button class="filter-btn active" data-category="all">Todos</button>
+      <button class="filter-btn" data-category="frutas">Frutas</button>
+      <button class="filter-btn" data-category="organicos">Orgânicos</button>
+      <button class="filter-btn" data-category="legumes">Legumes</button>
+      <button class="filter-btn" data-category="verduras">Verduras</button>
+      <button class="filter-btn" data-category="artesanais">Artesanais</button>
+      <button class="filter-btn" data-category="promocoes">Promoções</button>
     </div>
 
-    <div class="product-grid">
+    <div class="product-grid" id="product-grid">
       <!-- Produto 1 -->
-      <div class="product-card">
+      <div class="product-card" data-categories="frutas organicos" data-badges="organico">
         <div style="position: relative;">
           <img src="Maçã.png" alt="Maçãs Orgânicas" class="product-image">
           <span class="product-badge">Orgânico</span>
@@ -415,7 +443,7 @@
       </div>
 
       <!-- Produto 2 -->
-      <div class="product-card">
+      <div class="product-card" data-categories="artesanais" data-badges="artesanal">
         <div style="position: relative;">
           <img src="Pote_d_mel.png" alt="Mel Puro" class="product-image">
           <span class="product-badge">Artesanal</span>
@@ -437,7 +465,7 @@
       </div>
 
       <!-- Produto 3 -->
-      <div class="product-card">
+      <div class="product-card" data-categories="legumes organicos" data-badges="organico">
         <div style="position: relative;">
           <img src="https://images.unsplash.com/photo-1447175008436-054170c2e979?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cenouras Orgânicas" class="product-image">
           <span class="product-badge">Orgânico</span>
@@ -459,7 +487,7 @@
       </div>
 
       <!-- Produto 4 -->
-      <div class="product-card">
+      <div class="product-card" data-categories="artesanais" data-badges="artesanal">
         <div style="position: relative;">
           <img src="pao.png" alt="Pão Caseiro" class="product-image">
           <span class="product-badge">Artesanal</span>
@@ -481,7 +509,7 @@
       </div>
 
       <!-- Produto 5 -->
-      <div class="product-card">
+      <div class="product-card" data-categories="promocoes" data-badges="promocao">
         <div style="position: relative;">
           <img src="geleia.png" alt="Geleia de Morango" class="product-image">
           <span class="product-badge">Promoção</span>
@@ -503,7 +531,7 @@
       </div>
 
       <!-- Produto 6 -->
-      <div class="product-card">
+      <div class="product-card" data-categories="artesanais" data-badges="artesanal">
         <div style="position: relative;">
           <img src="queijo.png" alt="Queijo Colonial" class="product-image">
           <span class="product-badge">Artesanal</span>
@@ -608,6 +636,8 @@
 
     // Filtros de produtos
     const filterBtns = document.querySelectorAll('.filter-btn');
+    const productGrid = document.getElementById('product-grid');
+    const products = document.querySelectorAll('.product-card');
     
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -616,10 +646,43 @@
         // Adiciona a classe active apenas no botão clicado
         btn.classList.add('active');
         
-        // Aqui você implementaria a lógica para filtrar os produtos
-        // Por simplicidade, estamos apenas demonstrando a interação
+        const category = btn.dataset.category;
+        filterProducts(category);
       });
     });
+
+    // Função para filtrar produtos por categoria
+    function filterProducts(category) {
+      let hasProducts = false;
+      
+      products.forEach(product => {
+        const productCategories = product.dataset.categories.split(' ');
+        
+        if (category === 'all' || productCategories.includes(category)) {
+          product.style.display = 'flex';
+          hasProducts = true;
+        } else {
+          product.style.display = 'none';
+        }
+      });
+      
+      // Mostra mensagem se não houver produtos na categoria selecionada
+      const existingMessage = document.querySelector('.empty-category');
+      if (existingMessage) {
+        existingMessage.remove();
+      }
+      
+      if (!hasProducts && category !== 'all') {
+        const message = document.createElement('div');
+        message.className = 'empty-category';
+        message.innerHTML = `
+          <p>Não encontramos produtos nesta categoria.</p>
+          <p>Verifique na próxima página ou selecione outra categoria.</p>
+          <i class="fas fa-arrow-down"></i>
+        `;
+        productGrid.appendChild(message);
+      }
+    }
 
     // Lista de desejos
     const wishlistBtns = document.querySelectorAll('.wishlist-btn');
