@@ -348,45 +348,6 @@
       opacity: 0.8;
     }
 
-    /* Estilos para a mensagem de "ver na próxima página" */
-    .no-products-message {
-      text-align: center;
-      grid-column: 1 / -1;
-      padding: 50px 20px;
-      background-color: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    .no-products-message h3 {
-      color: var(--primary-color);
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-    }
-
-    .no-products-message p {
-      color: #666;
-      margin-bottom: 30px;
-    }
-
-    .arrow-down {
-      font-size: 2rem;
-      color: var(--primary-color);
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(-20px);
-      }
-      60% {
-        transform: translateY(-10px);
-      }
-    }
-
     @media (max-width: 768px) {
       .product-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -416,18 +377,18 @@
     </div>
 
     <div class="product-filters">
-      <button class="filter-btn active" data-category="all">Todos</button>
-      <button class="filter-btn" data-category="frutas">Frutas</button>
-      <button class="filter-btn" data-category="organicos">Orgânicos</button>
-      <button class="filter-btn" data-category="legumes">Legumes</button>
-      <button class="filter-btn" data-category="verduras">Verduras</button>
-      <button class="filter-btn" data-category="temperos">Temperos</button>
-      <button class="filter-btn" data-category="promocoes">Promoções</button>
+      <button class="filter-btn active">Todos</button>
+      <button class="filter-btn">Frutas</button>
+      <button class="filter-btn">Orgânicos</button>
+      <button class="filter-btn">Legumes</button>
+      <button class="filter-btn">Verduras</button>
+      <button class="filter-btn">Artesanais</button>
+      <button class="filter-btn">Promoções</button>
     </div>
 
-    <div class="product-grid" id="product-grid">
+    <div class="product-grid">
       <!-- Produto 1 - Laranja -->
-      <div class="product-card" data-categories="frutas">
+      <div class="product-card">
         <div style="position: relative;">
           <img src="laranja.png" alt="Laranja" class="product-image">
           <span class="product-badge">Frutas</span>
@@ -449,7 +410,7 @@
       </div>
 
       <!-- Produto 2 - Banana -->
-      <div class="product-card" data-categories="frutas">
+      <div class="product-card">
         <div style="position: relative;">
           <img src="banana.png" alt="Banana" class="product-image">
           <span class="product-badge">Frutas</span>
@@ -471,7 +432,7 @@
       </div>
 
       <!-- Produto 3 - Alface -->
-      <div class="product-card" data-categories="verduras">
+      <div class="product-card">
         <div style="position: relative;">
           <img src="alface.png" alt="Alface" class="product-image">
           <span class="product-badge">Verduras</span>
@@ -493,7 +454,7 @@
       </div>
 
       <!-- Produto 4 - Couve -->
-      <div class="product-card" data-categories="verduras organicos">
+      <div class="product-card">
         <div style="position: relative;">
           <img src="couve.png" alt="Couve" class="product-image">
           <span class="product-badge">Orgânico</span>
@@ -515,7 +476,7 @@
       </div>
 
       <!-- Produto 5 - Almeirão -->
-      <div class="product-card" data-categories="verduras">
+      <div class="product-card">
         <div style="position: relative;">
           <img src="almeirao.png" alt="Almeirão" class="product-image">
           <span class="product-badge">Verduras</span>
@@ -537,7 +498,7 @@
       </div>
 
       <!-- Produto 6 - Rúcula -->
-      <div class="product-card" data-categories="verduras organicos">
+      <div class="product-card">
         <div style="position: relative;">
           <img src="rucula.png" alt="Rúcula" class="product-image">
           <span class="product-badge">Orgânico</span>
@@ -559,7 +520,7 @@
       </div>
 
       <!-- Produto 7 - Salsinha -->
-      <div class="product-card" data-categories="temperos">
+      <div class="product-card">
         <div style="position: relative;">
           <img src="salsinha.png" alt="Salsinha" class="product-image">
           <span class="product-badge">Temperos</span>
@@ -581,7 +542,7 @@
       </div>
 
       <!-- Produto 8 - Cebolinha -->
-      <div class="product-card" data-categories="temperos">
+      <div class="product-card">
         <div style="position: relative;">
           <img src="cebolinha.png" alt="Cebolinha" class="product-image">
           <span class="product-badge">Temperos</span>
@@ -686,8 +647,6 @@
 
     // Filtros de produtos
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const productGrid = document.getElementById('product-grid');
-    const products = document.querySelectorAll('.product-card');
     
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -696,76 +655,10 @@
         // Adiciona a classe active apenas no botão clicado
         btn.classList.add('active');
         
-        const category = btn.dataset.category;
-        filterProducts(category);
+        // Aqui você implementaria a lógica para filtrar os produtos
+        // Por simplicidade, estamos apenas demonstrando a interação
       });
     });
-
-    function filterProducts(category) {
-      let hasProducts = false;
-      
-      // Primeiro, mostra todos os produtos para resetar o filtro
-      products.forEach(product => {
-        product.style.display = 'none';
-        
-        // Se a categoria for 'all' ou o produto pertence à categoria selecionada
-        if (category === 'all' || product.dataset.categories.includes(category)) {
-          product.style.display = 'flex';
-          hasProducts = true;
-        }
-      });
-      
-      // Se não houver produtos na categoria selecionada
-      if (!hasProducts) {
-        showNoProductsMessage(category);
-      } else {
-        // Remove a mensagem de "sem produtos" se existir
-        const existingMessage = document.querySelector('.no-products-message');
-        if (existingMessage) {
-          existingMessage.remove();
-        }
-      }
-    }
-    
-    function showNoProductsMessage(category) {
-      // Remove a mensagem existente se houver
-      const existingMessage = document.querySelector('.no-products-message');
-      if (existingMessage) {
-        existingMessage.remove();
-      }
-      
-      // Cria a mensagem
-      const messageDiv = document.createElement('div');
-      messageDiv.className = 'no-products-message';
-      
-      // Mapeia os nomes das categorias para exibição amigável
-      const categoryNames = {
-        'frutas': 'Frutas',
-        'organicos': 'Orgânicos',
-        'legumes': 'Legumes',
-        'verduras': 'Verduras',
-        'temperos': 'Temperos',
-        'promocoes': 'Promoções'
-      };
-      
-      messageDiv.innerHTML = `
-        <h3>Nenhum produto encontrado na categoria "${categoryNames[category] || category}"</h3>
-        <p>Verifique na próxima página ou selecione outra categoria.</p>
-        <div class="arrow-down">
-          <i class="fas fa-arrow-down"></i>
-        </div>
-      `;
-      
-      // Insere a mensagem no grid de produtos
-      productGrid.innerHTML = '';
-      productGrid.appendChild(messageDiv);
-      
-      // Adiciona os botões de navegação abaixo da mensagem
-      const navButtons = document.querySelector('.navigation-buttons');
-      if (navButtons) {
-        navButtons.style.marginTop = '20px';
-      }
-    }
 
     // Lista de desejos
     const wishlistBtns = document.querySelectorAll('.wishlist-btn');
