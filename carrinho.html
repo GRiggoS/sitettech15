@@ -358,8 +358,8 @@
         <button class="checkout-btn whatsapp-btn" onclick="sendToWhatsApp()">
           <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
         </button>
-        <button class="checkout-btn finish-btn" onclick="checkout()">
-          <i class="fas fa-credit-card"></i> Finalizar Pedido = 
+        <button class="checkout-btn finish-btn" onclick="window.location.href='checkout.html'">
+          <i class="fas fa-credit-card"></i> Finalizar Pedido
         </button>
       </div>
     </div>
@@ -489,18 +489,6 @@
       const phoneNumber = '5543991300761'; // Substitua pelo número da loja
       const encodedMessage = encodeURIComponent(message);
       window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
-    }
-    
-    // Finaliza o pedido
-    function checkout() {
-      if (cart.length === 0) {
-        alert('Seu carrinho está vazio!');
-        return;
-      }
-      
-      // Aqui você pode redirecionar para uma página de checkout ou processar o pagamento
-      alert('Redirecionando para a página de pagamento...');
-      // window.location.href = 'checkout.html';
     }
     
     // Inicializa o carrinho
